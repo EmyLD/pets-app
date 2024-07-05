@@ -1,0 +1,51 @@
+services:
+  frontend:
+    build: ./frontend
+    container_name: frontend-container
+    volumes:
+      - ./frontend:/usr/src/app/src
+      - /usr/src/app/node_modules
+      - pets-frontend:/pets-frontend
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    container_name: backend-container
+    env_file:
+      - .env
+    volumes:
+      - ./backend:/usr/src/src/src
+      - /usr/src/src/node_modules
+      - pets-backend:/pets-backend
+    ports:
+      - 3001:3001
+    depends_on:
+      - postgres
+    environment:
+      - DB_URL:posgresql://postgres/pets
+    tty: true
+
+  postgres:
+    build: ./database
+    container_name: postgres-container
+    env_file:
+      - .env
+    volumes:
+      - postgres-pets:/var/lib/posgresql/data
+    ports:
+      - "5432:5432"
+    restart: always
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+volumes:
+  postgres-pets:
+  pets-frontend:
+  pets-backend:
