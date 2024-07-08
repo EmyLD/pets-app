@@ -1,5 +1,6 @@
 # Utiliser une image de base officielle de Node.js
-FROM node:22.4.0
+FROM node:22.4.0-alpine3.20
+
 
 # Créer un répertoire de travail
 WORKDIR /src

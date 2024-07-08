@@ -25,7 +25,7 @@ services:
     depends_on:
       - postgres
     environment:
-      - DB_URL:posgresql://postgres/pets
+      - DB_URL:postgresql://postgres/pets
     tty: true
 
   postgres:
@@ -34,7 +34,7 @@ services:
     env_file:
       - .env
     volumes:
-      - postgres-pets:/var/lib/posgresql/data
+      - postgres-pets:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     restart: always
