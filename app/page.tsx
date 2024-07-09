@@ -1,4 +1,4 @@
-import Publication from "@/components/publication/Card";
+import Publication from "@/components/publication/Publication";
 import Image from "next/image";
 
 export default function Home() {
