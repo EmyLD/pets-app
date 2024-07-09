@@ -26,7 +26,12 @@ export default function Navlink({
   onclick,
 }: Props): React.ReactElement {
   return (
-    <Button variant={variant} asChild onClick={onclick}>
+    <Button
+      variant={variant}
+      asChild
+      onClick={onclick}
+      className="p-5 md:px-10 md:py-15 w-1/2 md: 3/4"
+    >
       <Link href={href}>{children}</Link>
     </Button>
   );
