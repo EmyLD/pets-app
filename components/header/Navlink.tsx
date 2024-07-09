@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { ReactHTMLElement, ReactNode } from "react";
+import { MouseEventHandler, ReactHTMLElement, ReactNode } from "react";
 
 type Variant =
   | "link"
@@ -16,15 +16,17 @@ interface Props {
   variant?: Variant;
   href: string;
   children: string;
+  onclick?: MouseEventHandler;
 }
 
 export default function Navlink({
   variant,
   href,
   children,
+  onclick,
 }: Props): React.ReactElement {
   return (
-    <Button variant={variant} asChild>
+    <Button variant={variant} asChild onClick={onclick}>
       <Link href={href}>{children}</Link>
     </Button>
   );

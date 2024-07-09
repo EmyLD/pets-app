@@ -1,25 +1,13 @@
-"use client";
-
 import { Bebas_Neue } from "next/font/google";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Navlink from "./Navlink";
 
+let userConnected = false;
+let isPro = false;
 const bebas = Bebas_Neue({ weight: "400", subsets: ["latin"] });
 
 export default function Header() {
-  let isPro = false;
-  let isConnected = false;
-
-  const changeIsPro = () => {
-    isPro ? false : true;
-  };
-
-  let userConnected = false;
-  const changeIsConnected = () => {
-    isConnected ? false : true;
-  };
-
   return (
     <>
       <header className=" flex flex-initial justify-between text-center items-center px-2 py-1">
@@ -31,32 +19,24 @@ export default function Header() {
             {userConnected ? (
               <>
                 <Navlink href={"/recherche"} variant={"link"}>
-                  {isPro ? "Rechercher" : "Rechercher"}
+                  Rechercher
                 </Navlink>
                 <Navlink href={"/information"} variant={"link"}>
-                  {isPro ? "Ajouter une publication" : "Rechercher"}
+                  M'informer
                 </Navlink>
                 <Navlink href={"/contact"} variant={"link"}>
                   Contact
                 </Navlink>
                 <Navlink href={"/profil"} variant={"default"}>
-                  {isPro ? "Mon élevage" : "Profil"}
+                  Profil
                 </Navlink>
               </>
             ) : (
               <>
-                <Navlink
-                  href={"/pro"}
-                  variant={"outline"}
-                  onclick={changeIsPro}
-                >
-                  {isPro ? "Vous êtes un adoptant ?" : "Vous êtes un éleveur ?"}
+                <Navlink href={"/pro"} variant={"outline"}>
+                  Vous êtes un éleveur ?
                 </Navlink>
-                <Navlink
-                  href={"/login"}
-                  variant={"default"}
-                  onclick={changeIsConnected}
-                >
+                <Navlink href={"/login"} variant={"default"}>
                   Se connecter
                 </Navlink>
               </>
