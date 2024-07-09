@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { MouseEventHandler, ReactHTMLElement, ReactNode } from "react";
+import { MouseEventHandler } from "react";
 
 type Variant =
   | "link"

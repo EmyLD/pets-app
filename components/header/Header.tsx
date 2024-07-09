@@ -7,7 +7,7 @@ const bebas = Bebas_Neue({ weight: "400", subsets: ["latin"] });
 
 export default function Header() {
   let isPro = false;
-  let isConnected = true;
+  let isConnected = false;
 
   return (
     <>
@@ -20,7 +20,7 @@ export default function Header() {
             {isConnected ? (
               <>
                 <Navlink href={"/recherche"} variant={"link"}>
-                  {isPro ? "Rechercher" : "Rechercher"}
+                  Rechercher
                 </Navlink>
                 <Navlink href={"/information"} variant={"link"}>
                   {isPro ? "Ajouter une publication" : "Rechercher"}
@@ -29,13 +29,15 @@ export default function Header() {
                   Contact
                 </Navlink>
                 <Navlink href={"/profil"} variant={"default"}>
-                  {isPro ? "Mon élevage" : "Profil"}
+                  Profil
                 </Navlink>
               </>
             ) : (
               <>
                 <Navlink href={"/pro"} variant={"outline"}>
-                  {isPro ? "Vous êtes un adoptant ?" : "Vous êtes un éleveur ?"}
+                  {isPro
+                    ? "Vous êtes un particulier ?"
+                    : "Vous êtes un éleveur ?"}
                 </Navlink>
                 <Navlink href={"/login"} variant={"default"}>
                   Se connecter
