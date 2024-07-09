@@ -2,19 +2,20 @@
 
 import { Bebas_Neue } from "next/font/google";
 import Navlink from "./Navlink";
-
-const bebas = Bebas_Neue({ weight: "400", subsets: ["latin"] });
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 export default function Header() {
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+
   let isPro = false;
   let isConnected = false;
 
   return (
     <>
       <header className=" flex flex-initial justify-between text-center items-center px-2 py-1">
-        <a href={"/"} className={`${bebas.className} p-4 text-5xl`}>
-          nos animaux
-        </a>
+        {isDesktop ? <p>isDesktop</p> : <p>mobile</p>}
+
+        {/*
         <nav>
           <ul className="flex gap-3 ">
             {isConnected ? (
@@ -45,7 +46,7 @@ export default function Header() {
               </>
             )}
           </ul>
-        </nav>
+        </nav> */}
       </header>
     </>
   );
