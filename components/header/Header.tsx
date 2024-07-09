@@ -1,24 +1,13 @@
 "use client";
 
 import { Bebas_Neue } from "next/font/google";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import Navlink from "./Navlink";
 
 const bebas = Bebas_Neue({ weight: "400", subsets: ["latin"] });
 
 export default function Header() {
   let isPro = false;
-  let isConnected = false;
-
-  const changeIsPro = () => {
-    isPro ? false : true;
-  };
-
-  let userConnected = false;
-  const changeIsConnected = () => {
-    isConnected ? false : true;
-  };
+  let isConnected = true;
 
   return (
     <>
@@ -28,7 +17,7 @@ export default function Header() {
         </a>
         <nav>
           <ul className="flex gap-3 ">
-            {userConnected ? (
+            {isConnected ? (
               <>
                 <Navlink href={"/recherche"} variant={"link"}>
                   {isPro ? "Rechercher" : "Rechercher"}
@@ -45,18 +34,10 @@ export default function Header() {
               </>
             ) : (
               <>
-                <Navlink
-                  href={"/pro"}
-                  variant={"outline"}
-                  onclick={changeIsPro}
-                >
+                <Navlink href={"/pro"} variant={"outline"}>
                   {isPro ? "Vous êtes un adoptant ?" : "Vous êtes un éleveur ?"}
                 </Navlink>
-                <Navlink
-                  href={"/login"}
-                  variant={"default"}
-                  onclick={changeIsConnected}
-                >
+                <Navlink href={"/login"} variant={"default"}>
                   Se connecter
                 </Navlink>
               </>
