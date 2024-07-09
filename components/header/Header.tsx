@@ -3,6 +3,8 @@
 import { Bebas_Neue } from "next/font/google";
 import Navlink from "./Navlink";
 import { useMediaQuery } from "@/hooks/use-media-query";
+import { Drawer, DrawerContent, DrawerTrigger } from "../ui/drawer";
+import Menu from "./Menu";
 
 export default function Header() {
   const isDesktop = useMediaQuery("(min-width: 768px)");
@@ -13,7 +15,14 @@ export default function Header() {
   return (
     <>
       <header className=" flex flex-initial justify-between text-center items-center px-2 py-1">
-        {isDesktop ? <p>isDesktop</p> : <p>mobile</p>}
+        {isDesktop ? (
+          <p>isDesktop</p>
+        ) : (
+          <Drawer>
+            <DrawerTrigger>.....</DrawerTrigger>
+            <DrawerContent>Some gregerger</DrawerContent>
+          </Drawer>
+        )}
 
         {/*
         <nav>
