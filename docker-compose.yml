@@ -8,8 +8,7 @@ services:
       - pets-frontend:/pets-frontend
     ports:
       - 3000:3000
-    depends_on:
-      - backend
+
 
 volumes:
   pets-frontend:
