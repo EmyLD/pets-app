@@ -1,7 +1,7 @@
 "use client";
 
 import { useMediaQuery } from "@/hooks/use-media-query";
-import { Drawer, DrawerContent, DrawerTrigger } from "../ui/drawer";
+import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import Menu from "./Menu";
 import Logo from "./Logo";
 
