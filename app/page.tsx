@@ -6,14 +6,14 @@ import { ReactElement } from "react";
 export default function Home(): ReactElement {
   return (
     <section id="publication-section" className="grid grid-cols-12 py-5 px-2">
-      <div className="max-h-32  min-h-24  col-start-1 col-span-full md:col-span-10 md:col-start-2 md:grid md:grid-cols-2 md:items-center">
+      <div className="max-h-32  min-h-24  col-start-1 col-span-full md:col-span-10 md:col-start-2 md:grid-rows-1 md:grid-cols-2 md:grid md:items-center">
         <H2 className="text-4xl md:text-6xl">Dernières publications</H2>
         <a className="flex gap-2 md:items-center md:justify-end">
           Voir plus d'annonces <ChevronRight />
         </a>
       </div>
 
-      <div className="pub-container gap-y-3 md:col-start-2 col-span-full  md:col-span-10 flex flex-wrap w-full justify-around items-center">
+      <div className="pub-container gap-y-3 md:col-start-2 col-span-full md:grid-cols-2 md:grid lg:grid-cols-5  flex flex-wrap w-full justify-around items-center">
         <Publication
           avatarDesc="pp"
           avatarImg=""

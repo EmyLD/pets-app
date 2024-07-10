@@ -28,7 +28,7 @@ type Props = {
 export default function Publication({ ...props }: Props): React.ReactElement {
   const isDesktop = useMediaQuery("(min-width: 768px)");
   return (
-    <Card className="w-9/12 md:w-2/12">
+    <Card className="w-9/12 md:w-10/12">
       <CardHeader className="justify-between md:flex md:justify-between">
         <Avatar className="">
           <AvatarImage src={props.avatarImg} />
