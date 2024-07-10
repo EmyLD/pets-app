@@ -9,7 +9,6 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
 import { Heart } from "lucide-react";
-import { Button } from "../ui/button";
 
 type Props = {
   avatarImg: string;
@@ -21,7 +20,11 @@ type Props = {
   description: string;
 };
 
-export default function Publication({ ...props }: Props) {
+Publication.defaultProps = {
+  imageUrl: "", // Valeur par défaut pour imageUrl si aucune n'est fournie
+};
+
+export default function Publication({ ...props }: Props): React.ReactElement {
   return (
     <Card className="w-96">
       <CardHeader className="items-center">

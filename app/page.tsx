@@ -1,7 +1,8 @@
 import Publication from "@/components/publication/Publication";
 import H2 from "@/components/ui/H2";
+import { ReactElement } from "react";
 
-export default function Home() {
+export default function Home(): ReactElement {
   return (
     <>
       <section>
