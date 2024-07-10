@@ -9,6 +9,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
 import { Heart } from "lucide-react";
+import { Button } from "../ui/button";
 
 type Props = {
   avatarImg: string;
@@ -19,6 +20,9 @@ type Props = {
   title: string;
   description: string;
 };
+
+// todo : contour violet hover récupérer couleur orange.
+// todo : ajouter un hook mediaquery pour ifMobile (div display none)
 
 export default function Publication({ ...props }: Props) {
   return (
@@ -36,16 +40,14 @@ export default function Publication({ ...props }: Props) {
           <Heart />
         </button>
       </CardHeader>
-      <CardContent className="relative w-96 h-72">
+      <CardContent className="relative w-96 h-72 overflow-hidden">
         <Image
           src={props.petImg}
-          layout="fill"
-          className="object-cover"
+          fill={true}
+          objectFit="cover"
           alt="blabla"
+          priority={true}
         />
-        <p className="bg-slate-500 relative h-full -z-10 hover:z-50 ">
-          Voir pluus
-        </p>
       </CardContent>
       <CardFooter>
         <CardTitle>{props.title}</CardTitle>
