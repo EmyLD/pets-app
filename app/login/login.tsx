@@ -1,8 +1,10 @@
 "use client"
-
+import { Eye, EyeOff } from "lucide-react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+import { useState } from "react"
+import { buttonVariants } from "@/components/ui/button"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -16,9 +18,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 
-
-// Set all input requirement. It's like a regex.
-
+// Définir le schéma de validation
 const formSchema = z.object({
     username: z.string().min(2, {
         message: "Username must be at least 2 characters.",
@@ -35,92 +35,111 @@ const formSchema = z.object({
     path: ["passwordConfirm"],
 });
 
-
 export function ProfileForm() {
-    // 1. Define your form.
+    // password visibility
+    const [showPassword, setShowPassword] = useState(false)
+    // passwordConfirm visibility
+    const [showPasswordConfirm, setShowPasswordConfirm] = useState(false)
+
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             username: "",
+            email: "",
+            password: "",
+            passwordConfirm: "",
         },
     })
 
-    // 2. Define a submit handler.
+    // Handler de soumission du formulaire
     function onSubmit(values: z.infer<typeof formSchema>) {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
         console.log(values)
     }
 
     return (
-        <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                <FormField
-                    control={form.control}
-                    name="username"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Username</FormLabel>
-                            <FormControl>
-                                <Input placeholder="Pseudo" {...field} />
-                            </FormControl>
-                            <FormDescription>
-                                This is your public display name.
-                            </FormDescription>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Email</FormLabel>
-                            <FormControl>
-                                <Input placeholder="Yourmail@..." {...field} />
-                            </FormControl>
-                            <FormDescription>
-                                Enter your email adress.
-                            </FormDescription>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
-                    name="password"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Password</FormLabel>
-                            <FormControl>
-                                <Input  {...field} />
-                            </FormControl>
-                            <FormDescription>
-                                Choose a password between 8 and 16 characters.
-                            </FormDescription>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
-                    name="passwordConfirm"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Password confirm</FormLabel>
-                            <FormControl>
-                                <Input  {...field} />
-                            </FormControl>
-                            <FormDescription>
-                                Confirm your password
-                            </FormDescription>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <Button type="submit">Submit</Button>
-            </form>
-        </Form>
+        <main>
+
+            <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                    <FormField
+                        control={form.control}
+                        name="username"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Username</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="Pseudo" {...field} />
+                                </FormControl>
+                                <FormDescription>
+                                    This is your public display name.
+                                </FormDescription>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Email</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="Yourmail@..." {...field} />
+                                </FormControl>
+                                <FormDescription>
+                                    Enter your email address.
+                                </FormDescription>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="password"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Password</FormLabel>
+                                <FormControl>
+                                    <div className="relative">
+                                        <Input type={showPassword ? "text" : "password"} placeholder="Choose a password" {...field} />
+                                        <span className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer" onClick={() => setShowPassword(!showPassword)}>
+                                            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                                        </span>
+                                    </div>
+                                </FormControl>
+                                <FormDescription>
+                                    Choose a password between 8 and 16 characters.
+                                </FormDescription>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="passwordConfirm"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Password confirm</FormLabel>
+                                <FormControl>
+                                    <div className="relative">
+                                        <Input type={showPasswordConfirm ? "text" : "password"} placeholder="Confirm your password" {...field} />
+                                        <span className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer" onClick={() => setShowPasswordConfirm(!showPasswordConfirm)}>
+                                            {showPasswordConfirm ? <EyeOff size={20} /> : <Eye size={20} />}
+                                        </span>
+                                    </div>
+                                </FormControl>
+                                <FormDescription>
+                                    Confirm your password
+                                </FormDescription>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <Button type="submit">Submit</Button>
+                </form>
+            </Form>
+
+        </main>
     )
 }
