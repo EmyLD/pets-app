@@ -56,9 +56,9 @@ export default function Publication({ ...props }: Props): React.ReactElement {
       <CardFooter>
         <CardTitle>{props.title}</CardTitle>
         <CardDescription className="py-1 md:py-2">
-          <p>{isDesktop && props.description}</p>
-          <p>{props.price} €</p>
-          <p>{props.city}</p>
+          <span>{isDesktop && props.description}</span>
+          <span>{props.price} €</span>
+          <span>{props.city}</span>
         </CardDescription>
       </CardFooter>
     </Card>
