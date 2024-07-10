@@ -21,9 +21,6 @@ type Props = {
   description: string;
 };
 
-// todo : contour violet hover récupérer couleur orange.
-// todo : ajouter un hook mediaquery pour ifMobile (div display none)
-
 export default function Publication({ ...props }: Props) {
   return (
     <Card className="w-96">
@@ -40,7 +37,7 @@ export default function Publication({ ...props }: Props) {
           <Heart />
         </button>
       </CardHeader>
-      <CardContent className="relative w-96 h-72 overflow-hidden">
+      <CardContent className="relative w-96 h-72 overflow-hidden hover:cursor-pointer">
         <Image
           src={props.petImg}
           fill={true}

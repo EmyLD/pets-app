@@ -61,6 +61,7 @@ const config = {
         "indigo-light": "#f0eff7",
         "indigo-light-hover": "#e9e7f3",
         "indigo-light-active": "#d1cee6",
+        orange: "#F5BD84",
       },
       borderRadius: {
         lg: "var(--radius)",
