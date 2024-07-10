@@ -20,6 +20,12 @@ const formSchema = z.object({
     username: z.string().min(2, {
         message: "Username must be at least 2 characters.",
     }),
+    password: z.string().min(6, {
+        message: "Your password must be at least 6 characters.",
+    }),
+    email: z.string().email().min(8).max(16, {
+        message: "Your email must be valid"
+    }),
 })
 
 export function ProfileForm() {
