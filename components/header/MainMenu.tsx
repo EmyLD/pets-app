@@ -1,6 +1,4 @@
-import { useMediaQuery } from "@/hooks/use-media-query";
 import Navlink from "./Navlink";
-import Logo from "./Logo";
 let isPro = false;
 let isConnected = false;
 

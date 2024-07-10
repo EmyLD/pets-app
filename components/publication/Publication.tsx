@@ -37,7 +37,9 @@ export default function Publication({ ...props }: Props): React.ReactElement {
 
         <section>
           <CardTitle>{props.name}</CardTitle>
-          <CardDescription>{props.rating}</CardDescription>
+          <CardDescription aria-describedby="notation-éleveur">
+            {props.rating}
+          </CardDescription>
         </section>
         <button>
           <Heart />
@@ -55,10 +57,13 @@ export default function Publication({ ...props }: Props): React.ReactElement {
       </CardContent>
       <CardFooter>
         <CardTitle>{props.title}</CardTitle>
-        <CardDescription className="py-1 md:py-2">
-          <p>{isDesktop && props.description}</p>
-          <p>{props.price} €</p>
-          <p>{props.city}</p>
+        <CardDescription
+          aria-describedby="description-animal"
+          className="py-1 md:py-2"
+        >
+          <span>{isDesktop && props.description}</span>
+          <span>{props.price} €</span>
+          <span>{props.city}</span>
         </CardDescription>
       </CardFooter>
     </Card>
