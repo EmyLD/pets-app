@@ -1,12 +1,19 @@
 import Publication from "@/components/publication/Publication";
 import H2 from "@/components/ui/H2";
+import { ChevronRight } from "lucide-react";
 import { ReactElement } from "react";
 
 export default function Home(): ReactElement {
   return (
-    <>
-      <section>
-        <H2>cOUCOU</H2>
+    <section id="publication-section" className="grid grid-cols-12 py-5 px-2">
+      <div className="max-h-32  min-h-24  col-start-1 col-span-full md:col-span-11 md:col-start-2 md:grid-cols-2 md:items-center">
+        <H2 className="text-4xl md:text-6xl">Dernières publications</H2>
+        <a className="flex gap-2 md:items-center md:justify-end">
+          Voir plus d'annonces <ChevronRight />
+        </a>
+      </div>
+
+      <div className="pub-container gap-y-3 md:col-start-2 col-span-full flex flex-wrap w-full justify-around items-center">
         <Publication
           avatarDesc="pp"
           avatarImg=""
@@ -16,7 +23,43 @@ export default function Home(): ReactElement {
           rating="4/5"
           description="Je vous présente mon bébou, il ne mord pas, il est très chou."
         />
-      </section>
-    </>
+        <Publication
+          avatarDesc="pp"
+          avatarImg=""
+          petImg="/dog.webp"
+          title="Mon super bébou"
+          name="L'élevage du Sud"
+          rating="4/5"
+          description="Je vous présente mon bébou, il ne mord pas, il est très chou."
+        />
+        <Publication
+          avatarDesc="pp"
+          avatarImg=""
+          petImg="/dog.webp"
+          title="Mon super bébou"
+          name="L'élevage du Sud"
+          rating="4/5"
+          description="Je vous présente mon bébou, il ne mord pas, il est très chou."
+        />
+        <Publication
+          avatarDesc="pp"
+          avatarImg=""
+          petImg="/dog.webp"
+          title="Mon super bébou"
+          name="L'élevage du Sud"
+          rating="4/5"
+          description="Je vous présente mon bébou, il ne mord pas, il est très chou."
+        />
+        <Publication
+          avatarDesc="pp"
+          avatarImg=""
+          petImg="/dog.webp"
+          title="Mon super bébou"
+          name="L'élevage du Sud"
+          rating="4/5"
+          description="Je vous présente mon bébou, il ne mord pas, il est très chou."
+        />
+      </div>
+    </section>
   );
 }

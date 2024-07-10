@@ -26,27 +26,28 @@ Publication.defaultProps = {
 
 export default function Publication({ ...props }: Props): React.ReactElement {
   return (
-    <Card className="w-96">
-      <CardHeader className="items-center">
-        <Avatar className="w-16 h-16 mr-4">
+    <Card className="w-5/12 md:w-2/12">
+      <CardHeader className="flex justify-between">
+        <Avatar className="">
           <AvatarImage src={props.avatarImg} />
           <AvatarFallback>{props.avatarDesc}</AvatarFallback>
         </Avatar>
-        <section className="w-full">
+        <section className="">
           <CardTitle>{props.name}</CardTitle>
           <CardDescription>{props.rating}</CardDescription>
         </section>
-        <button className="w-full flex justify-end">
+        <button className="">
           <Heart />
         </button>
       </CardHeader>
-      <CardContent className="relative w-96 h-72 overflow-hidden hover:cursor-pointer">
+      <CardContent className="relative">
         <Image
           src={props.petImg}
           fill={true}
-          objectFit="cover"
           alt="blabla"
           priority={true}
+          sizes=" (max-width: 768px) 50vw, (max-width: 1200px) 50vw"
+          className="w-full"
         />
       </CardContent>
       <CardFooter>
