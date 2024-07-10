@@ -2,7 +2,8 @@
 
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
-import Menu from "./Menu";
+import MainMenu from "./MainMenu";
+import { Menu } from "lucide-react";
 import Logo from "./Logo";
 
 export default function Header() {
@@ -13,13 +14,15 @@ export default function Header() {
       <header className=" flex justify-between items-center px-2 py-1 w-full">
         <Logo />
         {isDesktop ? (
-          <Menu />
+          <MainMenu />
         ) : (
           <>
             <Drawer>
-              <DrawerTrigger>.....</DrawerTrigger>
-              <DrawerContent>
+              <DrawerTrigger>
                 <Menu />
+              </DrawerTrigger>
+              <DrawerContent>
+                <MainMenu />
               </DrawerContent>
             </Drawer>
           </>

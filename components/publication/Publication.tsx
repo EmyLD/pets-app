@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Card,
   CardContent,
@@ -9,6 +11,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
 import { Heart } from "lucide-react";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 type Props = {
   avatarImg: string;
@@ -18,41 +21,45 @@ type Props = {
   petImg: string;
   title: string;
   description: string;
-};
-
-Publication.defaultProps = {
-  imageUrl: "", // Valeur par défaut pour imageUrl si aucune n'est fournie
+  price: number;
+  city: string;
 };
 
 export default function Publication({ ...props }: Props): React.ReactElement {
+  const isDesktop = useMediaQuery("(min-width: 768px)");
   return (
-    <Card className="w-5/12 md:w-2/12">
-      <CardHeader className="flex justify-between">
+    <Card className="w-9/12 md:w-2/12">
+      <CardHeader className="justify-between md:flex md:justify-between">
         <Avatar className="">
           <AvatarImage src={props.avatarImg} />
           <AvatarFallback>{props.avatarDesc}</AvatarFallback>
         </Avatar>
-        <section className="">
+
+        <section>
           <CardTitle>{props.name}</CardTitle>
           <CardDescription>{props.rating}</CardDescription>
         </section>
-        <button className="">
+        <button>
           <Heart />
         </button>
       </CardHeader>
-      <CardContent className="relative">
+      <CardContent className="relative min-h-40 ">
         <Image
           src={props.petImg}
           fill={true}
           alt="blabla"
           priority={true}
-          sizes=" (max-width: 768px) 50vw, (max-width: 1200px) 50vw"
-          className="w-full"
+          sizes=" (max-width: 768px, (max-width: 1200px) 50vw"
+          className="w-full object-cover"
         />
       </CardContent>
       <CardFooter>
         <CardTitle>{props.title}</CardTitle>
-        <CardDescription className="py-2">{props.description}</CardDescription>
+        <CardDescription className="py-1 md:py-2">
+          <p>{isDesktop && props.description}</p>
+          <p>{props.price} €</p>
+          <p>{props.city}</p>
+        </CardDescription>
       </CardFooter>
     </Card>
   );
