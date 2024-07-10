@@ -38,7 +38,7 @@ export function MailVerif() {
     }
 
     return (
-        <main>
+        <main className="flex justify-center pt-6 ">
 
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -49,10 +49,10 @@ export function MailVerif() {
                             <FormItem>
                                 <FormLabel>Email</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Yourmail@..." {...field} />
+                                    <Input className="w-96" placeholder="Votremail@..." {...field} />
                                 </FormControl>
                                 <FormDescription>
-                                    Enter your email address.
+                                    Saisissez votre adresse mail.
                                 </FormDescription>
                                 <FormMessage />
                             </FormItem>

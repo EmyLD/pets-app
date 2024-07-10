@@ -58,7 +58,7 @@ export function ProfileForm() {
     }
 
     return (
-        <main>
+        <main className="flex justify-center pt-6" >
 
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -67,12 +67,12 @@ export function ProfileForm() {
                         name="username"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Username</FormLabel>
+                                <FormLabel>Nom d'utilisateur</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Pseudo" {...field} />
+                                    <Input className="w-96" placeholder="Pseudo" {...field} />
                                 </FormControl>
                                 <FormDescription>
-                                    This is your public display name.
+                                    Choisissez votre pseudo.
                                 </FormDescription>
                                 <FormMessage />
                             </FormItem>
@@ -85,10 +85,10 @@ export function ProfileForm() {
                             <FormItem>
                                 <FormLabel>Email</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Yourmail@..." {...field} />
+                                    <Input className="w-96" placeholder="Votremail@..." {...field} />
                                 </FormControl>
                                 <FormDescription>
-                                    Enter your email address.
+                                    Entrez votre adresse mail.
                                 </FormDescription>
                                 <FormMessage />
                             </FormItem>
@@ -99,17 +99,17 @@ export function ProfileForm() {
                         name="password"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Password</FormLabel>
+                                <FormLabel>Mot de passe</FormLabel>
                                 <FormControl>
                                     <div className="relative">
-                                        <Input type={showPassword ? "text" : "password"} placeholder="Choose a password" {...field} />
+                                        <Input className="w-96" type={showPassword ? "text" : "password"} placeholder="Mot de passe..." {...field} />
                                         <span className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer" onClick={() => setShowPassword(!showPassword)}>
                                             {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                                         </span>
                                     </div>
                                 </FormControl>
                                 <FormDescription>
-                                    Choose a password between 8 and 16 characters.
+                                    Choisissez un mot de passe comprenant entre 8 et 16 caractères.
                                 </FormDescription>
                                 <FormMessage />
                             </FormItem>
@@ -120,17 +120,17 @@ export function ProfileForm() {
                         name="passwordConfirm"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Password confirm</FormLabel>
+                                <FormLabel>Confirmation du mot de passe</FormLabel>
                                 <FormControl>
                                     <div className="relative">
-                                        <Input type={showPasswordConfirm ? "text" : "password"} placeholder="Confirm your password" {...field} />
+                                        <Input className="w-96" type={showPasswordConfirm ? "text" : "password"} placeholder="Mot de passe..." {...field} />
                                         <span className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer" onClick={() => setShowPasswordConfirm(!showPasswordConfirm)}>
                                             {showPasswordConfirm ? <EyeOff size={20} /> : <Eye size={20} />}
                                         </span>
                                     </div>
                                 </FormControl>
                                 <FormDescription>
-                                    Confirm your password
+                                    Confirmez votre mot de passe.
                                 </FormDescription>
                                 <FormMessage />
                             </FormItem>
