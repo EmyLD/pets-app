@@ -20,9 +20,7 @@ export default function RootLayout({
     <html lang="fr">
       <body className={`${inter.className}`}>
         <Header />
-        <main className="bg-indigo-light flex flex-col min-h-screen max-h-auto justify-between">
-          {children}
-        </main>
+        <main className="bg-indigo-light px-4">{children}</main>
       </body>
     </html>
   );
