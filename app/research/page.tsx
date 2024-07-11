@@ -1,4 +1,4 @@
-import GeocalisationFiltre from "@/components/geocalisation"
+import GeocalisationFiltre from "@/components/geocalisationFiltre"
 
 
 
