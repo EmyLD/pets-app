@@ -4,6 +4,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+import Image from "next/image"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -60,6 +61,9 @@ export function ContactForm({ onFormSubmit }: { onFormSubmit: () => void }) {
 
     return (
         <main className="flex justify-center pt-6">
+            <div className="md:col-span-2 flex justify-center items-center">
+                <Image src="/formulaire.png" alt="Formulaire Image" width={600} height={300} />
+            </div>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-8">
                     <div className="md:col-start-3 md:col-span-4">
@@ -70,7 +74,7 @@ export function ContactForm({ onFormSubmit }: { onFormSubmit: () => void }) {
                                 <FormItem>
                                     <FormLabel>Prénom</FormLabel>
                                     <FormControl>
-                                        <Input {...field} />
+                                        <Input className="rounded-2xl" {...field} />
                                     </FormControl>
                                     <FormDescription />
                                     <FormMessage />
@@ -86,7 +90,7 @@ export function ContactForm({ onFormSubmit }: { onFormSubmit: () => void }) {
                                 <FormItem>
                                     <FormLabel>Nom</FormLabel>
                                     <FormControl>
-                                        <Input {...field} />
+                                        <Input className="rounded-2xl" {...field} />
                                     </FormControl>
                                     <FormDescription />
                                     <FormMessage />
@@ -102,7 +106,7 @@ export function ContactForm({ onFormSubmit }: { onFormSubmit: () => void }) {
                                 <FormItem>
                                     <FormLabel>Adresse mail</FormLabel>
                                     <FormControl>
-                                        <Input {...field} />
+                                        <Input className="rounded-2xl" {...field} />
                                     </FormControl>
                                     <FormDescription />
                                     <FormMessage />
@@ -154,7 +158,7 @@ export function ContactForm({ onFormSubmit }: { onFormSubmit: () => void }) {
                                     <FormLabel>Votre message</FormLabel>
                                     <FormControl>
                                         <textarea
-                                            className="w-full h-40 md:h-80 px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500 placeholder-black-500 placeholder-opacity-50"
+                                            className=" rounded-2xl w-full h-40 md:h-80 px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500 placeholder-black-500 placeholder-opacity-50"
                                             placeholder="Votre message..."
                                             {...field}
                                         />
