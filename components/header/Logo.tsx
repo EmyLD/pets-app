@@ -6,7 +6,7 @@ export default function Logo() {
     <>
       <a
         href={"/"}
-        className={`${bebas.className} p-4 text-xl md:text-2xl lg:text-3xl`}
+        className={`${bebas.className}  text-4xl md:text-2xl lg:text-5xl`}
       >
         nos animaux
       </a>

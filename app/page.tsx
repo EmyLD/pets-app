@@ -37,7 +37,13 @@ export default function Home(): ReactElement {
             </div>
           </CardHeader>
           <CardContent className="relative h-52">
-            <Image src="/dog.webp" alt="chien" fill />
+            <Image
+              src="/dog.webp"
+              alt="chien"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              priority
+            />
           </CardContent>
           <CardFooter className="grid grid-rows-custom-rows px-2">
             <CardTitle className="font-semibold">Titre</CardTitle>

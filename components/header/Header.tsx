@@ -11,7 +11,7 @@ export default function Header() {
 
   return (
     <>
-      <header className=" flex justify-between items-center px-2 py-1 w-full">
+      <header className="flex justify-between items-center  py-1 w-full px-4 lg:px-20 xl:px-32 2xl:px-40 ">
         <Logo />
         {isDesktop ? (
           <MainMenu />
