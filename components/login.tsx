@@ -34,7 +34,7 @@ const formSchema = z.object({
     path: ["passwordConfirm"],
 });
 
-export function ProfileForm() {
+export function Signup() {
     // password visibility
     const [showPassword, setShowPassword] = useState(false)
     // passwordConfirm visibility
@@ -57,10 +57,9 @@ export function ProfileForm() {
     }
 
     return (
-        <main className="flex justify-center pt-6" >
-
+        <main className="flex justify-center p-4 sm:p-8">
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 md:space-y-8 w-full max-w-md">
                     <FormField
                         control={form.control}
                         name="username"
@@ -68,7 +67,7 @@ export function ProfileForm() {
                             <FormItem>
                                 <FormLabel>Nom d'utilisateur</FormLabel>
                                 <FormControl>
-                                    <Input className="w-96" placeholder="Pseudo" {...field} />
+                                    <Input className="w-full md:w-96" placeholder="Pseudo" {...field} />
                                 </FormControl>
                                 <FormDescription>
                                     Choisissez votre pseudo.
@@ -84,7 +83,7 @@ export function ProfileForm() {
                             <FormItem>
                                 <FormLabel>Email</FormLabel>
                                 <FormControl>
-                                    <Input className="w-96" placeholder="Votremail@..." {...field} />
+                                    <Input className="w-full md:w-96" placeholder="Votremail@..." {...field} />
                                 </FormControl>
                                 <FormDescription>
                                     Entrez votre adresse mail.
@@ -101,7 +100,7 @@ export function ProfileForm() {
                                 <FormLabel>Mot de passe</FormLabel>
                                 <FormControl>
                                     <div className="relative">
-                                        <Input className="w-96" type={showPassword ? "text" : "password"} placeholder="Mot de passe..." {...field} />
+                                        <Input className="w-full md:w-96" type={showPassword ? "text" : "password"} placeholder="Mot de passe..." {...field} />
                                         <span className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer" onClick={() => setShowPassword(!showPassword)}>
                                             {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                                         </span>
@@ -122,7 +121,7 @@ export function ProfileForm() {
                                 <FormLabel>Confirmation du mot de passe</FormLabel>
                                 <FormControl>
                                     <div className="relative">
-                                        <Input className="w-96" type={showPasswordConfirm ? "text" : "password"} placeholder="Mot de passe..." {...field} />
+                                        <Input className="w-full md:w-96" type={showPasswordConfirm ? "text" : "password"} placeholder="Mot de passe..." {...field} />
                                         <span className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer" onClick={() => setShowPasswordConfirm(!showPasswordConfirm)}>
                                             {showPasswordConfirm ? <EyeOff size={20} /> : <Eye size={20} />}
                                         </span>
@@ -135,10 +134,9 @@ export function ProfileForm() {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit">Submit</Button>
+                    <Button type="submit" className="w-full md:w-auto">Valider</Button>
                 </form>
             </Form>
-
         </main>
     )
 }

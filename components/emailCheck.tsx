@@ -22,7 +22,7 @@ const formSchema = z.object({
     })
 });
 
-export function MailVerif() {
+export function EmailCheck() {
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
