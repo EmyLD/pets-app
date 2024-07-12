@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import Image from "next/image"
-
+import axios from 'axios';
 import { Button } from "@/components/ui/button"
 import {
     Form,
@@ -48,9 +48,14 @@ export function ContactForm({ onFormSubmit }: { onFormSubmit: () => void }) {
     });
 
     // Handler de soumission du formulaire
-    function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log(values);
-        onFormSubmit();
+    async function onSubmit(values: z.infer<typeof formSchema>) {
+        try {
+            const response = await axios.post('/api/send-email', values);
+            console.log(response.data);
+            onFormSubmit();
+        } catch (error) {
+            console.error('Erreur lors de l\'envoi de l\'email', error);
+        }
     }
 
 
