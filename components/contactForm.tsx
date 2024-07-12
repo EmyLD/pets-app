@@ -1,5 +1,3 @@
-
-
 "use client"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -20,9 +18,6 @@ import { Input } from "@/components/ui/input"
 
 // Définir le schéma de validation
 const formSchema = z.object({
-    objet: z.string().max(50, {
-        message: "Objet trop long"
-    }),
     text: z.string().max(255, {
         message: "Votre message est trop long"
     }),
@@ -44,7 +39,6 @@ export function ContactForm({ onFormSubmit }: { onFormSubmit: () => void }) {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            objet: "",
             text: "",
             firstname: "",
             lastname: "",
