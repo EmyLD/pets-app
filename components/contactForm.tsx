@@ -59,121 +59,144 @@ export function ContactForm({ onFormSubmit }: { onFormSubmit: () => void }) {
         onFormSubmit();
     }
 
+
     return (
         <main className="flex justify-center pt-6">
-            <div className="md:col-span-2 flex justify-center items-center">
-                <Image src="/formulaire.png" alt="Formulaire Image" width={600} height={300} />
+            <div className="grid grid-cols-12 gap-4 w-full">
+                {/* Marges à gauche */}
+                <div className="col-span-1 md:col-span-1"></div>
+
+                {/* Image à gauche */}
+                <div className="hidden md:block md:col-span-4">
+                    <Image
+                        src="/formulaire.png"
+                        alt="Formulaire"
+                        className="w-full h-auto"
+                        layout="responsive"
+                        width={300}
+                        height={300}
+                    />
+                </div>
+
+                {/* Formulaire */}
+                <div className="col-span-10 md:col-span-5 md:ml-4">
+                    <Form {...form}>
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                            <div className="grid grid-cols-12 gap-4">
+                                <div className="col-span-12 md:col-span-6">
+                                    <FormField
+                                        control={form.control}
+                                        name="firstname"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>Prénom</FormLabel>
+                                                <FormControl>
+                                                    <Input className="rounded-md" {...field} />
+                                                </FormControl>
+                                                <FormDescription />
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                </div>
+                                <div className="col-span-12 md:col-span-6">
+                                    <FormField
+                                        control={form.control}
+                                        name="lastname"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>Votre nom</FormLabel>
+                                                <FormControl>
+                                                    <Input className="rounded-md" {...field} />
+                                                </FormControl>
+                                                <FormDescription />
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                </div>
+                                <div className="col-span-12 md:col-span-8">
+                                    <FormField
+                                        control={form.control}
+                                        name="email"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>Adresse mail</FormLabel>
+                                                <FormControl>
+                                                    <Input className="rounded-md" {...field} />
+                                                </FormControl>
+                                                <FormDescription />
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                </div>
+                                <div className="col-span-12 md:col-span-4 flex items-center space-x-4">
+                                    <FormField
+                                        control={form.control}
+                                        name="userType"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>Vous êtes</FormLabel>
+                                                <FormControl>
+                                                    <div className="flex space-x-4">
+                                                        <label className="flex items-center space-x-2">
+                                                            <input
+                                                                type="radio"
+                                                                {...field}
+                                                                checked={field.value === "particulier"}
+                                                                onChange={() => field.onChange("particulier")}
+                                                            />
+                                                            <span>Particulier</span>
+                                                        </label>
+                                                        <label className="flex items-center space-x-2">
+                                                            <input
+                                                                type="radio"
+                                                                {...field}
+                                                                checked={field.value === "professionnel"}
+                                                                onChange={() => field.onChange("professionnel")}
+                                                            />
+                                                            <span>Professionnel</span>
+                                                        </label>
+                                                    </div>
+                                                </FormControl>
+                                                <FormDescription />
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                </div>
+                                <div className="col-span-12">
+                                    <FormField
+                                        control={form.control}
+                                        name="text"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>Votre message</FormLabel>
+                                                <FormControl>
+                                                    <textarea
+                                                        className="w-full h-80 px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500 placeholder-black-500 placeholder-opacity-50"
+                                                        placeholder="Votre message..."
+                                                        {...field}
+                                                    />
+                                                </FormControl>
+                                                <FormDescription />
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                </div>
+                                <div className="col-span-12">
+                                    <Button type="submit">Submit</Button>
+                                </div>
+                            </div>
+                        </form>
+                    </Form>
+                </div>
+
+                {/* Marges à droite */}
+                <div className="col-span-1 md:col-span-1"></div>
             </div>
-            <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-8">
-                    <div className="md:col-start-3 md:col-span-4">
-                        <FormField
-                            control={form.control}
-                            name="firstname"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Prénom</FormLabel>
-                                    <FormControl>
-                                        <Input className="rounded-2xl" {...field} />
-                                    </FormControl>
-                                    <FormDescription />
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                    </div>
-                    <div className="md:col-span-4">
-                        <FormField
-                            control={form.control}
-                            name="lastname"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Nom</FormLabel>
-                                    <FormControl>
-                                        <Input className="rounded-2xl" {...field} />
-                                    </FormControl>
-                                    <FormDescription />
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                    </div>
-                    <div className="md:col-start-3 md:col-span-8">
-                        <FormField
-                            control={form.control}
-                            name="email"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Adresse mail</FormLabel>
-                                    <FormControl>
-                                        <Input className="rounded-2xl" {...field} />
-                                    </FormControl>
-                                    <FormDescription />
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                    </div>
-                    <div className="md:col-start-3 md:col-span-8">
-                        <FormField
-                            control={form.control}
-                            name="userType"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Vous êtes</FormLabel>
-                                    <FormControl>
-                                        <div className="flex space-x-4">
-                                            <label className="flex items-center space-x-2">
-                                                <input
-                                                    type="radio"
-                                                    {...field}
-                                                    checked={field.value === "particulier"}
-                                                    onChange={() => field.onChange("particulier")}
-                                                />
-                                                <span>Particulier</span>
-                                            </label>
-                                            <label className="flex items-center space-x-2">
-                                                <input
-                                                    type="radio"
-                                                    {...field}
-                                                    checked={field.value === "professionnel"}
-                                                    onChange={() => field.onChange("professionnel")}
-                                                />
-                                                <span>Professionnel</span>
-                                            </label>
-                                        </div>
-                                    </FormControl>
-                                    <FormDescription />
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                    </div>
-                    <div className="md:col-start-3 md:col-span-8">
-                        <FormField
-                            control={form.control}
-                            name="text"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Votre message</FormLabel>
-                                    <FormControl>
-                                        <textarea
-                                            className=" rounded-2xl w-full h-40 md:h-80 px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500 placeholder-black-500 placeholder-opacity-50"
-                                            placeholder="Votre message..."
-                                            {...field}
-                                        />
-                                    </FormControl>
-                                    <FormDescription />
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                    </div>
-                    <div className="md:col-start-3 md:col-span-8">
-                        <Button type="submit" className="w-full">Submit</Button>
-                    </div>
-                </form>
-            </Form>
         </main>
     )
 }
