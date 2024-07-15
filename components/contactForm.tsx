@@ -222,6 +222,7 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import H1 from "@/components/ui/H1";
 
 // Définir le schéma de validation
 const formSchema = z.object({
@@ -268,33 +269,30 @@ export function ContactForm({ onFormSubmit }: { onFormSubmit: () => void }) {
     return (
         <main className="flex justify-center pt-6">
             <div className="grid grid-cols-12 gap-4 w-full">
-                {/* 
-                    grid-cols-12: Divise la grille en 12 colonnes
-                    gap-4: Ajoute un espace de 4 unités entre les colonnes
-                    w-full: Utilise toute la largeur disponible
-                */}
-
                 {/* Image à gauche */}
                 <div className="hidden md:block md:col-span-4">
                     <Image
                         src="/formulaire.png"
                         alt="Formulaire"
-                        className="w-full h-auto" // Cachée à partir de "md"
+                        className="w-full h-auto"
                         layout="responsive"
                         width={300}
                         height={300}
                     />
                 </div>
 
-                {/* Formulaire, centré dans les 6 colonnes de droite */}
-                <div className="col-span-12 md:col-span-6 md:col-start-7 flex justify-center">
+                {/* Texte et Formulaire dans la même div */}
+                <div className="col-span-12 md:col-span-8 md:col-start-5 flex flex-col items-start md:items-center text-left md:text-center">
+                    <H1 className="pt-6">CONTACTEZ-NOUS</H1>
+                    <p className="pt-2">
+                        Une question ? Une suggestion ? Une remarque ? Une demande bien spécifique ? <br />
+                        Contactez-nous, on lira tous vos messages et nous nous engageons à vous répondre rapidement !
+                    </p>
+
+                    {/* Formulaire */}
                     <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 mt-4">
                             <div className="grid grid-cols-12 gap-4">
-                                {/* 
-                                    grid-cols-12: Divise la grille en 12 colonnes
-                                    gap-4: Ajoute un espace de 4 unités entre les colonnes
-                                */}
                                 <div className="col-span-12 md:col-span-6">
                                     <FormField
                                         control={form.control}
