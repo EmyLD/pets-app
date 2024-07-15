@@ -1,8 +1,6 @@
 "use client";
-import { useGeolocated } from "react-geolocated";
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import axios from "axios";
-import { useState, ChangeEvent, useEffect, SetStateAction } from "react";
+import { useState, useEffect } from "react";
 import { geoDistance } from "@/app/lib/utils/getGeoDistanceBefore";
 
 interface User {
@@ -21,8 +19,7 @@ export default function GeocalisationFilter() {
   const [error, setError] = useState<string | null>(null);
   const [radius, setRadius] = useState<number>(0);
 
-
-//This function is use to check if the user want to be geolocated and to get his geocalistion if he want to
+  //This function is use to check if the user want to be geolocated and to get his geocalistion if he want to
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
       // if (isGeolocationAvailable && isGeolocationEnabled ) {
@@ -47,7 +44,7 @@ export default function GeocalisationFilter() {
         //Verify the structur of the API response
         if (Array.isArray(response.data)) {
           setBreeders(response.data);
-          console.log('Resultata fetch: '+ response.data);
+          console.log("Resultata fetch: " + response.data);
         } else {
           setError("Les données de l'API ne sont pas sous la forme attendue");
         }
@@ -55,28 +52,23 @@ export default function GeocalisationFilter() {
       .catch((error) => setError(error.message));
   }, []);
 
-
-//This function is used to filter the breeders by their distance between them and the user
+  //This function is used to filter the breeders by their distance between them and the user
   function getBreedersFiltred() {
     const listBreederFiltered = breeders.filter(distanceFilter);
     return listBreederFiltered;
   }
-
-
-  const breedersFiltre = getBreedersFiltred()
+  const breedersFiltred = getBreedersFiltred();
 
   //This function is used to check the distance between the User and the Breeder
-  function distanceFilter (breeder:User)  {
-  const calculDistance = geoDistance(
-    userLatitude,
-    userLongitude,
-    breeder.latitude,
-    breeder.longitude
-  )
-  return calculDistance <= radius;
-  
-};
-
+  function distanceFilter(breeder: User) {
+    const distance = geoDistance(
+      userLatitude,
+      userLongitude,
+      breeder.latitude,
+      breeder.longitude
+    );
+    return distance <= radius;
+  }
 
   return (
     <>
@@ -101,7 +93,7 @@ export default function GeocalisationFilter() {
       </div>
       <button onClick={getBreedersFiltred}>Utiliser le Filtre</button>
       <div>
-        {breedersFiltre.map((item, index) => {
+        {breedersFiltred.map((item, index) => {
           return (
             <div key={index}>
               <p>{item.latitude}</p>
