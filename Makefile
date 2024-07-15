@@ -1,6 +1,6 @@
 # Variables
 COMMIT_MSG = Mise à jour automatique
-BRANCH = dev
+BRANCH = ajoutMakeFile
 
 # Règles
 all: commit push
