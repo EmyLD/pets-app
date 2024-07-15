@@ -11,7 +11,7 @@ const H2 = React.forwardRef<
   <h2
     ref={ref}
     className={cn(
-      "text-6xl  leading-none tracking-tight",
+      "text-4xl  leading-none tracking-tight",
       className,
       bebas.className
     )}

@@ -2,10 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --secondary: 30 85% 74%;
+}
+
 @layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
