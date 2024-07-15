@@ -19,7 +19,10 @@ export default function GeocalisationFilter() {
   const [error, setError] = useState<string | null>(null);
   const [radius, setRadius] = useState<number>(0);
 
-  //This function is use to check if the user want to be geolocated and to get his geocalistion if he want to
+  /**
+   * This function is used to check if the user wants to be geolocated and to get his geocalistion if he wants to
+   * @param event 
+   */
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
       // if (isGeolocationAvailable && isGeolocationEnabled ) {
@@ -41,7 +44,7 @@ export default function GeocalisationFilter() {
     axios
       .get("https://668d26f2099db4c579f1e5d1.mockapi.io/users/users")
       .then((response) => {
-        //Verify the structur of the API response
+        //Verify the structure of the API response
         if (Array.isArray(response.data)) {
           setBreeders(response.data);
           console.log("Resultata fetch: " + response.data);
@@ -52,15 +55,23 @@ export default function GeocalisationFilter() {
       .catch((error) => setError(error.message));
   }, []);
 
-  //This function is used to filter the breeders by their distance between them and the user
-  function getBreedersFiltred() {
-    const listBreederFiltered = breeders.filter(distanceFilter);
+  /**
+   * This function is used to filter the breeders by the distance between them and the user
+   * @returns 
+   */
+  function getBreedersFiltered() {
+    const listBreederFiltered = breeders.filter(getDistance);
     return listBreederFiltered;
   }
-  const breedersFiltred = getBreedersFiltred();
+  const breedersFiltred = getBreedersFiltered();
 
-  //This function is used to check the distance between the User and the Breeder
-  function distanceFilter(breeder: User) {
+   /**
+    * This function is used to check the distance between the User and the Breeder
+    * @param breeder 
+    * @returns 
+    */
+
+  function getDistance(breeder: User) {
     const distance = geoDistance(
       userLatitude,
       userLongitude,
@@ -91,7 +102,7 @@ export default function GeocalisationFilter() {
         />
         <hr />
       </div>
-      <button onClick={getBreedersFiltred}>Utiliser le Filtre</button>
+      <button onClick={getBreedersFiltered}>Utiliser le Filtre</button>
       <div>
         {breedersFiltred.map((item, index) => {
           return (
