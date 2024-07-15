@@ -1,7 +1,4 @@
-export async function geoDistance (lat1: number, lon1: number, lat2: number, lon2: number) {
-
-
-    return new Promise ((resolve, reject) => {
+export function geoDistance (lat1: number, lon1: number, lat2: number, lon2: number) {
 
         const R:number = 6371; // Rayon de la Terre en km
         const dLat = (lat2 - lat1) * (Math.PI / 180);
@@ -12,7 +9,7 @@ export async function geoDistance (lat1: number, lon1: number, lat2: number, lon
             Math.sin(dLon / 2) * Math.sin(dLon / 2);
         const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
-            resolve(R*c)
+            return(R*c)
         
-    })};
+    };
 
