@@ -4,7 +4,7 @@
 COMMIT_MSG = Mise à jour automatique
 
 #	!!!!!! CHANGER LE NOM DE LA BRANCHE !!!!!!
-BRANCH = ajoutMakeFile
+BRANCH = footer
 
 # Règles
 all: commit push
