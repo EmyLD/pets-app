@@ -3,6 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import Image from "next/image"
+import H3 from "./ui/H3"
 import axios from 'axios';
 import { Button } from "@/components/ui/button"
 import {
@@ -60,145 +61,146 @@ export function ContactForm({ onFormSubmit }: { onFormSubmit: () => void }) {
     }
 
     return (
-        <main className="flex justify-center pt-6">
-            <div className="grid grid-cols-12 gap-4 w-full">
-                {/* Image à gauche */}
-                <div className="hidden md:block md:col-span-4">
-                    <Image
-                        src="/formulaire.png"
-                        alt="Formulaire"
-                        className="w-full h-auto"
-                        layout="responsive"
-                        width={300}
-                        height={300}
-                    />
-                </div>
+        <div className="min-h-screen grid grid-cols-1 xl:grid-cols-12 gap-4">
+            {/* Image à gauche */}
+            <div className="hidden xl:block xl:col-span-4 min-h-screen">
+                <Image
+                    src="/formulaire.png"
+                    alt="Formulaire"
+                    layout="responsive"
+                    width={300}
+                    height={300}
+                />
+            </div>
+            <div className="xl:col-span-2"></div>
 
+            <div className="xl:col-span-6 col-span-12">
+                <H1 className="text-center">CONTACTEZ-NOUS !</H1>
+                <p className="text-start pl-5">
+                    Une question ? Une suggestion ? Une remarque ? Une demande bien spécifique ? <br />
+                    Contactez-nous, on lira tous vos messages et nous nous engageons à vous répondre rapidement !
+                </p>
 
-                <div className="col-span-12 md:col-span-8 flex flex-col items-start md:items-center text-left md:text-center">
-                    <H1 className="pt-6">CONTACTEZ-NOUS</H1>
-                    <p className="pt-2">
-                        Une question ? Une suggestion ? Une remarque ? Une demande bien spécifique ? <br />
-                        Contactez-nous, on lira tous vos messages et nous nous engageons à vous répondre rapidement !
-                    </p>
-
-                    {/* Formulaire */}
-                    <div className="flex justify-center w-full mt-4">
-                        <Form {...form}>
-                            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full max-w-md">
-                                <div className="grid grid-cols-12 gap-4">
-                                    <div className="col-span-12 md:col-span-6">
-                                        <FormField
-                                            control={form.control}
-                                            name="firstname"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel>Prénom</FormLabel>
-                                                    <FormControl>
-                                                        <Input className="rounded-2xl bg-white focus:border-secondary" {...field} />
-                                                    </FormControl>
-                                                    <FormDescription />
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                    </div>
-                                    <div className="col-span-12 md:col-span-6">
-                                        <FormField
-                                            control={form.control}
-                                            name="lastname"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel>Votre nom</FormLabel>
-                                                    <FormControl>
-                                                        <Input className="rounded-2xl bg-white focus:border-secondary" {...field} />
-                                                    </FormControl>
-                                                    <FormDescription />
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                    </div>
-                                    <div className="col-span-12 xl:col-span-8">
-                                        <FormField
-                                            control={form.control}
-                                            name="email"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel>Adresse mail</FormLabel>
-                                                    <FormControl>
-                                                        <Input className="rounded-2xl bg-white focus:border-secondary" {...field} />
-                                                    </FormControl>
-                                                    <FormDescription />
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                    </div>
-                                    <div className="col-span-12 xl:col-span-4 flex flex-col xl:flex-row xl:items-center space-y-4 xl:space-y-0 xl:space-x-4">
-                                        <FormField
-                                            control={form.control}
-                                            name="userType"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel>Vous êtes</FormLabel>
-                                                    <FormControl>
-                                                        <div className="flex flex-col space-y-2 xl:space-y-0 xl:flex-row xl:space-x-4">
-                                                            <label className="flex items-center space-x-2">
-                                                                <input
-                                                                    type="radio"
-                                                                    {...field}
-                                                                    checked={field.value === "particulier"}
-                                                                    onChange={() => field.onChange("particulier")}
-                                                                />
-                                                                <span>Particulier</span>
-                                                            </label>
-                                                            <label className="flex items-center space-x-2">
-                                                                <input
-                                                                    type="radio"
-                                                                    {...field}
-                                                                    checked={field.value === "professionnel"}
-                                                                    onChange={() => field.onChange("professionnel")}
-                                                                />
-                                                                <span>Professionnel</span>
-                                                            </label>
-                                                        </div>
-                                                    </FormControl>
-                                                    <FormDescription />
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                    </div>
-                                    <div className="col-span-12">
-                                        <FormField
-                                            control={form.control}
-                                            name="text"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel>Votre message</FormLabel>
-                                                    <FormControl>
-                                                        <textarea
-                                                            className="focus:border-secondary rounded-2xl w-full h-80 px-3 py-2 text-gray-700 border rounded-lg focus:outline-none placeholder-black-500 placeholder-opacity-50"
-                                                            placeholder="Votre message..."
-                                                            {...field}
-                                                        />
-                                                    </FormControl>
-                                                    <FormDescription />
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                    </div>
-                                    <div className="col-span-12">
-                                        <Button type="submit">Submit</Button>
-                                    </div>
+                {/* Formulaire */}
+                <div className="min-h-screen p-4">
+                    <Form {...form}>
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 bg-white pt-8 pl-8 rounded-xl border-2 border-zinc-100">
+                            <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+                                <div className="flex flex-col">
+                                    <FormField
+                                        control={form.control}
+                                        name="firstname"
+                                        render={({ field }) => (
+                                            <FormItem className="flex items-center space-x-2">
+                                                <FormLabel className="w-1/3"><H3>prenom:</H3></FormLabel>
+                                                <FormControl>
+                                                    <Input className="rounded-2xl border-0 bg-zinc-100 focus:border-2 focus:border-secondary w-full" {...field} />
+                                                </FormControl>
+                                                <FormDescription />
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
                                 </div>
-                            </form>
-                        </Form>
-                    </div>
+                                <div className="flex flex-col">
+                                    <FormField
+                                        control={form.control}
+                                        name="lastname"
+                                        render={({ field }) => (
+                                            <FormItem className="flex items-center">
+                                                <FormLabel className="w-1/3"><H3>nom:</H3></FormLabel>
+                                                <FormControl>
+                                                    <Input className="rounded-2xl border-0 bg-zinc-100 focus:border-2 focus:border-secondary w-full" {...field} />
+                                                </FormControl>
+                                                <FormDescription />
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                </div>
+                            </div>
+                            <div className="flex flex-col">
+                                <FormField
+                                    control={form.control}
+                                    name="email"
+                                    render={({ field }) => (
+                                        <FormItem className="flex items-center">
+                                            <FormLabel><H3>adresse mail:</H3></FormLabel>
+                                            <FormControl>
+                                                <Input className="rounded-2xl border-0 bg-zinc-100 focus:border-2 focus:border-secondary w-full" {...field} />
+                                            </FormControl>
+                                            <FormDescription />
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            </div>
+
+                            <div className="flex flex-col xl:flex-row items-center space-y-2 xl:space-y-0 xl:space-x-2">
+                                <FormField
+                                    control={form.control}
+                                    name="userType"
+                                    render={({ field }) => (
+                                        <FormItem className="flex space-x-4">
+                                            <FormControl>
+                                                <div className="flex space-x-4">
+                                                    <label className="flex items-center space-x-2">
+                                                        <span><H3>particulier:</H3></span>
+                                                        <input
+                                                            type="checkbox"
+                                                            {...field}
+                                                            className="hidden peer"
+                                                            checked={field.value === "particulier"}
+                                                            onChange={() => field.onChange("particulier")}
+                                                        />
+                                                        <div className="w-5 h-5 bg-white border-2 border-gray-300 rounded peer-checked:bg-secondary"></div>
+                                                    </label>
+                                                    <label className="flex items-center space-x-2">
+                                                        <span><H3>professionnel:</H3></span>
+                                                        <input
+                                                            type="checkbox"
+                                                            {...field}
+                                                            className="hidden peer"
+                                                            checked={field.value === "professionnel"}
+                                                            onChange={() => field.onChange("professionnel")}
+                                                        />
+                                                        <div className="w-5 h-5 bg-white border-2 border-gray-300 rounded peer-checked:bg-secondary"></div>
+                                                    </label>
+                                                </div>
+                                            </FormControl>
+                                            <FormDescription />
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            </div>
+                            <div className="flex flex-col">
+                                <FormField
+                                    control={form.control}
+                                    name="text"
+                                    render={({ field }) => (
+                                        <FormItem className="flex flex-col">
+                                            <FormLabel><H3>message:</H3></FormLabel>
+                                            <FormControl>
+                                                <textarea
+                                                    className="rounded-2xl border-0 bg-zinc-100 focus:border-2 focus:border-secondary w-full h-72 resize-none"
+                                                    placeholder=""
+                                                    {...field}
+                                                />
+                                            </FormControl>
+                                            <FormDescription />
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            </div>
+                            <div className="flex justify-center">
+                                <Button className="rounded-xl" type="submit">Envoyer mon message</Button>
+                            </div>
+                        </form>
+                    </Form>
                 </div>
             </div>
-        </main>
-    )
+        </div>
+    );
 }

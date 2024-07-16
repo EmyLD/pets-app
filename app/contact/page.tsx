@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { ContactForm } from "@/components/contactForm";
 import { ContactThanks } from "@/components/contactThanks";
+
 export default function ContactPage() {
     const [formSubmitted, setFormSubmitted] = useState(false);
 
@@ -12,17 +13,10 @@ export default function ContactPage() {
     return (
         <div>
             {!formSubmitted ? (
-                ""
+                <ContactForm onFormSubmit={handleFormSubmit} />
             ) : (
                 <ContactThanks />
             )}
-            <ContactForm onFormSubmit={handleFormSubmit} />
         </div>
     );
 }
-
-
-
-
-
-
