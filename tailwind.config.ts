@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { Bebas_Neue } from "next/font/google";
 
 const config = {
   darkMode: ["class"],
@@ -62,6 +63,7 @@ const config = {
         "indigo-light-hover": "#e9e7f3",
         "indigo-light-active": "#d1cee6",
         orange: "#F5BD84",
+        purple: "#6C61AF",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -82,6 +84,13 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      fontFamily:{
+        'bebas_neue': "Bebas Neue"
+      },
+      fontSize:{
+        "body-1":"1.6rem",
+        "body-2":"1.4rem",
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],
