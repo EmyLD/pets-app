@@ -88,8 +88,9 @@ const config = {
         'bebas_neue': "Bebas Neue"
       },
       fontSize:{
-        "body-1":"1.6rem",
-        "body-2":"1.4rem",
+        "body-1":"19px",
+        "body-2":"16px",
+        "body-3":"14px",
       }
     },
   },
