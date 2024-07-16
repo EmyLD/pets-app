@@ -63,7 +63,7 @@ export function ContactForm({ onFormSubmit }: { onFormSubmit: () => void }) {
     return (
         <div className="min-h-screen grid grid-cols-1 xl:grid-cols-12 gap-4">
             {/* Image à gauche */}
-            <div className="hidden xl:block xl:col-span-4 min-h-screen">
+            <div className="hidden xl:block xl:col-span-5 min-h-screen">
                 <Image
                     src="/formulaire.png"
                     alt="Formulaire"
@@ -72,17 +72,18 @@ export function ContactForm({ onFormSubmit }: { onFormSubmit: () => void }) {
                     height={300}
                 />
             </div>
-            <div className="xl:col-span-2"></div>
+            <div className="xl:col-span-1"></div>
 
-            <div className="xl:col-span-6 col-span-12">
-                <H1 className="text-center">CONTACTEZ-NOUS !</H1>
-                <p className="text-start pl-5">
+
+            <div className="xl:col-span-6 col-span-12 pt-24">
+                <H1 className="text-center bg-white pt-8 pb-8 rounded-t-xl">CONTACTEZ-NOUS !</H1>
+                <p className="text-start pl-5 bg-white">
                     Une question ? Une suggestion ? Une remarque ? Une demande bien spécifique ? <br />
                     Contactez-nous, on lira tous vos messages et nous nous engageons à vous répondre rapidement !
                 </p>
 
                 {/* Formulaire */}
-                <div className="min-h-screen p-4">
+                <div className=" p-4 bg-white rounded-b-xl">
                     <Form {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 bg-white pt-8 pl-8 rounded-xl border-2 border-zinc-100">
                             <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
@@ -183,7 +184,7 @@ export function ContactForm({ onFormSubmit }: { onFormSubmit: () => void }) {
                                             <FormLabel><H3>message:</H3></FormLabel>
                                             <FormControl>
                                                 <textarea
-                                                    className="rounded-2xl border-0 bg-zinc-100 focus:border-2 focus:border-secondary w-full h-72 resize-none"
+                                                    className="rounded-2xl border-0 bg-zinc-100 focus:border-2 focus:border-secondary w-full h-56 resize-none"
                                                     placeholder=""
                                                     {...field}
                                                 />
@@ -194,7 +195,7 @@ export function ContactForm({ onFormSubmit }: { onFormSubmit: () => void }) {
                                     )}
                                 />
                             </div>
-                            <div className="flex justify-center">
+                            <div className="flex justify-center pb-8">
                                 <Button className="rounded-xl" type="submit">Envoyer mon message</Button>
                             </div>
                         </form>
