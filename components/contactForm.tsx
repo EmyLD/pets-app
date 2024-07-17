@@ -77,7 +77,7 @@ export function ContactForm({ onFormSubmit }: { onFormSubmit: () => void }) {
 
 
 
-            <div className=" 2xl:col-span-6 2xl:col-start-7 sm:col-start-3 sm:col-end-11 col-span-12 pt-24 xl:m-4 m-4">
+            <div className=" 2xl:col-span-6 2xl:col-start-7 sm:col-start-3 sm:col-end-11 col-span-12 xl:mb-4 m-4">
                 <H1 className="text-center bg-white pt-8 pb-8 rounded-t-xl">CONTACTEZ-NOUS !</H1>
                 <p className="text-start pl-5 bg-white">
                     Une question ? Une suggestion ? Une remarque ? Une demande bien spécifique ? <br />
