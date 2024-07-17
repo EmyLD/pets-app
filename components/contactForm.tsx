@@ -61,21 +61,23 @@ export function ContactForm({ onFormSubmit }: { onFormSubmit: () => void }) {
     }
 
     return (
-        <div className="min-h-screen grid grid-cols-1 xl:grid-cols-12 gap-4">
+        <div className="min-h-screen grid grid-cols-12 gap-4">
             {/* Image à gauche */}
-            <div className="hidden xl:block xl:col-span-5 min-h-screen">
+            <div className="relative hidden 2xl:block xl:col-span-5">
                 <Image
                     src="/formulaire.png"
                     alt="Formulaire"
-                    layout="responsive"
-                    width={300}
-                    height={300}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1080px) 50vw 33vw"
                 />
             </div>
-            <div className="xl:col-span-1"></div>
+
+            {/* Colonne de séparation */}
 
 
-            <div className="xl:col-span-6 col-span-12 pt-24">
+
+            <div className=" 2xl:col-span-6 2xl:col-start-7 sm:col-start-3 sm:col-end-11 col-span-12 pt-24 xl:m-4 m-4">
                 <H1 className="text-center bg-white pt-8 pb-8 rounded-t-xl">CONTACTEZ-NOUS !</H1>
                 <p className="text-start pl-5 bg-white">
                     Une question ? Une suggestion ? Une remarque ? Une demande bien spécifique ? <br />
@@ -85,7 +87,7 @@ export function ContactForm({ onFormSubmit }: { onFormSubmit: () => void }) {
                 {/* Formulaire */}
                 <div className=" p-4 bg-white rounded-b-xl">
                     <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 bg-white pt-8 pl-8 rounded-xl border-2 border-zinc-100">
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 bg-white pt-8 pl-8 rounded-xl border-2 border-zinc-100 pr-4 ">
                             <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
                                 <div className="flex flex-col">
                                     <FormField
