@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Pin } from 'lucide-react';
+import H3 from './ui/H3';
 
 
 
@@ -64,21 +65,21 @@ export default function UserProfile() {
         //         </div>
 
 
-        <div className="p-4 max-w-xl mx-auto grid grid-cols-12">
-            <div className='flex justify-between col-span-12 border-b-2 mb-8 pb-8 border-zinc-200'>
+        <div className="p-4  grid grid-cols-12">
+            <div className='flex justify-between col-span-12 border-b-2 mb-8 pb-8 border-zinc-200 md:hidden'>
                 <button className='border-profil border-secondary border-2 text-secondary p-2'>Mon profil</button>
                 <button className='border-2 p-2'><Pin className='-rotate-45' /></button>
-                <button className='border-2 p-2'>Mon profil</button>
+                <button className='border-2 p-2'>Favoris</button>
             </div>
-            <div className='col-span-12'>
-                <div className='flex grid justify-center'>
+            <div className='col-span-12 md:col-span-4'>
+                <div className='flex justify-center'>
                     <Avatar>
                         <AvatarImage src="https://github.com/shadcn.png" />
                         <AvatarFallback>CN</AvatarFallback>
                     </Avatar>
                 </div>
                 <div className='flex justify-center'>
-                    <button className='pb-8'>Editez votre photo de profile</button>
+                    <button className='pb-8 text-caca'>Editez votre photo de profile</button>
                 </div>
 
                 <div className='grid grid-cols-12'>
@@ -99,7 +100,9 @@ export default function UserProfile() {
                         <div className='pb-8 border-b-2 border-zinc-200'>Bois d'Arcy</div>
                     </div>
                 </div>
-                <p className='pt-8'>Paramètres du compte</p>
+                <H3 className='pt-8'>
+                    Paramètres du compte
+                </H3>
 
 
 
