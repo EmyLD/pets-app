@@ -2,7 +2,7 @@
 "use client"
 import { useState, useEffect } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Icon } from 'lucide-react';
+import { Pin } from 'lucide-react';
 
 
 
@@ -65,10 +65,10 @@ export default function UserProfile() {
 
 
         <div className="p-4 max-w-xl mx-auto grid grid-cols-12">
-            <div className='flex justify-between col-span-12'>
-                <button>AAAA</button>
-                <button>AAAA</button>
-                <button>AAAA</button>
+            <div className='flex justify-between col-span-12 border-b-2 mb-8 pb-8 border-zinc-200'>
+                <button className='border-profil border-secondary border-2 text-secondary p-2'>Mon profil</button>
+                <button className='border-2 p-2'><Pin className='-rotate-45' /></button>
+                <button className='border-2 p-2'>Mon profil</button>
             </div>
             <div className='col-span-12'>
                 <div className='flex grid justify-center'>
@@ -78,29 +78,28 @@ export default function UserProfile() {
                     </Avatar>
                 </div>
                 <div className='flex justify-center'>
-                    <button>Editez votre photo de profile</button>
+                    <button className='pb-8'>Editez votre photo de profile</button>
                 </div>
 
                 <div className='grid grid-cols-12'>
                     <div className='col-span-4'>
                         <div className='pb-8'>Nom:</div>
                         <div className='pb-8'>Email:</div>
-                        <div className='pb-8'>Bio:</div>
-                        <div className='pb-8'>_________________________</div>
-                        <div className='pb-8'>Domicile:</div>
+                        <div className='pb-8 border-b-2 border-zinc-200'>Bio:</div>
+                        <div className='pb-8 pt-8'>Domicile:</div>
                         <div className='pb-8'>Foyer:</div>
-                        <div className='pb-8'>Ville:</div>
+                        <div className='pb-8 border-b-2 border-zinc-200'>Ville:</div>
                     </div>
                     <div className='col-span-8'>
                         <div className='pb-8'>Helena Hills</div>
                         <div className='pb-8'>name@domain.com</div>
-                        <div className='pb-8'>A description of this user.</div>
-                        <div className='pb-8'>_________________________</div>
-                        <div className='pb-8'>Appartement</div>
+                        <div className='pb-8 border-b-2 border-zinc-200'>A description of this user.</div>
+                        <div className='pb-8 pt-8'>Appartement</div>
                         <div className='pb-8'>Célibataire</div>
-                        <div className='pb-8'>Bois d'Arcy</div>
+                        <div className='pb-8 border-b-2 border-zinc-200'>Bois d'Arcy</div>
                     </div>
                 </div>
+                <p className='pt-8'>Paramètres du compte</p>
 
 
 
