@@ -1,4 +1,4 @@
-import UserProfile from "@/components/userProfil";
+import UserProfile from "@/components/profil/userProfil";
 
 export default function LoginPage() {
     return (

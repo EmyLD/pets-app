@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Pin } from 'lucide-react';
-import H3 from './ui/H3';
+import H3 from '../ui/H3';
 
 
 
@@ -79,7 +79,7 @@ export default function UserProfile() {
                     </Avatar>
                 </div>
                 <div className='flex justify-center'>
-                    <button className='pb-8 text-caca'>Editez votre photo de profile</button>
+                    <button className='pb-8 text-indigo-dark'>Editez votre photo de profile</button>
                 </div>
 
                 <div className='grid grid-cols-12'>
