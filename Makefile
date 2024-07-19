@@ -1,19 +1,20 @@
 # Variables
 
 # MSG AUTOMATIQUE (VOUS POUVEZ LE CHANGER PAR CE QUE VOUS SOUHAITER)
-COMMIT_MSG = Mise à jour automatique
-
+# message ?= $(shell bash -c 'read -p "Username: " username; echo $$username')
+DESC = $(shell read -p "Entrez une description: " desc; echo $$desc)
 #	!!!!!! CHANGER LE NOM DE LA BRANCHE !!!!!!
-BRANCH = ajoutMakeFile
+BRANCH = $(git branch --show-current)
 
 # Règles
 all: commit push
+
 
 add:
 	git add .
 
 commit: add
-	git commit -m "$(COMMIT_MSG)"
+	git commit -m "$(DESC)"
 
 push: commit
 	git push origin $(BRANCH)
